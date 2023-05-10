@@ -14,7 +14,14 @@ model Usuario {
   id          Int         @id @default(autoincrement())
   senha       String
   perfil      Int
+  perfio      Perfis      @relation(fields: [perfil], references: [id])
+}
+
+model Perfis {
+  id      Int       @id @default(autoincrement())
+  perfil  String    @unique
   comentarios Comentario[]
+  user Usuario[]
 }
 
 model Equipamento {
@@ -33,6 +40,6 @@ model Comentario {
   equipamento Int
   perfil      Int
   data        DateTime    @default(now())
+  perfio      Perfis      @relation(fields: [perfil], references: [id])
   equipId     Equipamento @relation(fields: [equipamento], references: [id])
-  usuario     Usuario     @relation(fields: [perfil], references: [id])
 }

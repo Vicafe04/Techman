@@ -32,18 +32,7 @@ const login = async (req, res) => {
 
 const readAll = async (req, res) => {
     const usuario = await prisma.usuario.findMany({
-        select: {
-            id: true,
-            nome: true,
-            senha: true,
-            comentarios: {
-                select: {
-                    id: true,
-                    comentario: true,
-                    equipId: true,
-                }
-            }
-        }
+        select: true
     })
 
     res.status(200).json(usuario).end()
