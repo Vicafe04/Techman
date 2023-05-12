@@ -12,6 +12,7 @@ CREATE TABLE `Perfis` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `perfil` VARCHAR(191) NOT NULL,
 
+    UNIQUE INDEX `Perfis_perfil_key`(`perfil`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -42,7 +43,7 @@ CREATE TABLE `Comentario` (
 ALTER TABLE `Usuario` ADD CONSTRAINT `Usuario_perfil_fkey` FOREIGN KEY (`perfil`) REFERENCES `Perfis`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Comentario` ADD CONSTRAINT `Comentario_equipamento_fkey` FOREIGN KEY (`equipamento`) REFERENCES `Equipamento`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Comentario` ADD CONSTRAINT `Comentario_perfil_fkey` FOREIGN KEY (`perfil`) REFERENCES `Perfis`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Comentario` ADD CONSTRAINT `Comentario_perfil_fkey` FOREIGN KEY (`perfil`) REFERENCES `Perfis`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Comentario` ADD CONSTRAINT `Comentario_equipamento_fkey` FOREIGN KEY (`equipamento`) REFERENCES `Equipamento`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

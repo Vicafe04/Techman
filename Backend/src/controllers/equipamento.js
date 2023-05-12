@@ -13,7 +13,27 @@ const create = async (req, res) => {
 
 const readAll = async (req, res) => {
     const equipamento = await prisma.equipamento.findMany({
-        select: true
+        select: {
+            id: true,
+            equipamento: true,
+            imagem: true,
+            descricao: true,
+            ativo: true,
+            data: true,
+            comentarios: {
+                select: {
+                    comentario: true,
+                    equipamento: true,
+                    perfil: true,
+                    data: true,
+                    perfio: {
+                        select: {
+                            perfil: true
+                        }
+                    }
+                }
+            }
+        }
     })
 
     res.status(200).json(equipamento).end()
