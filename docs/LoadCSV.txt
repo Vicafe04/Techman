@@ -1,0 +1,27 @@
+LOAD DATA INFILE 'C:/Users/vinic/programas/Techman/docs/csv/perfis.csv'
+INTO TABLE perfis
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/vinic/programas/Techman/docs/csv/usuarios.csv'
+INTO TABLE usuario
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/vinic/programas/Techman/docs/csv/equipamentos.csv'
+INTO TABLE equipamento
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/vinic/programas/Techman/docs/csv/comentarios.csv'
+INTO TABLE comentario
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
