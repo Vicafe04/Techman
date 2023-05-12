@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id          Int         @id @default(autoincrement())
+  senha       String
+  perfil      Int
+  perfio      Perfis      @relation(fields: [perfil], references: [id])
+}
+
+model Perfis {
+  id      Int       @id @default(autoincrement())
+  perfil  String    @unique
+  comentarios Comentario[]
+  user Usuario[]
+}
+
+model Equipamento {
+  id            Int       @id @default(autoincrement())
+  equipamento   String
+  imagem        String
+  descricao     String
+  ativo         Boolean
+  data          DateTime
+  comentarios Comentario[]
+}
+
+model Comentario {
+  id          Int         @id @default(autoincrement())
+  comentario  String
+  equipamento Int
+  perfil      Int
+  data        DateTime    @default(now())
+  perfio      Perfis      @relation(fields: [perfil], references: [id])
+  equipId     Equipamento @relation(fields: [equipamento], references: [id])
+}
+
+LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/Techman/docs/csv/perfis.csv'
+INTO TABLE perfis
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/Techman/docs/csv/usuarios.csv'
+INTO TABLE usuario
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/Techman/docs/csv/equipamentos.csv'
+INTO TABLE equipamento
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/Techman/docs/csv/comentarios.csv'
+INTO TABLE comentario
+FIELDS TERMINATED BY ';'
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS;

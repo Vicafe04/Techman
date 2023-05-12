@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body onload="load()">
+    <main>
+        <div class="list">
+            <div class="item-list model">
+                <img id="imagem" src="" alt="">
+                <p id="id"></p>
+                <p id="equipamento"></p>
+                <p id="descricao"></p>
+                <p id="data"></p>
+                <p id="ativo"></p>
+                <button id="comentModal">doença</button>
+            </div>
+        </div>
+    </main>
+    <div class="modalOpenC">
+        <div class="modal">
+            <div class="list2">
+                <button id="close" onclick="fecharModalC()">X</button>
+                <h1>Comentários</h1>
+                <div class="item-list2 model">
+                    <h2 id="perfil"></h2>
+                    <h2 id="comentario"></h2>
+                    <h2 id="data2"></h2>
+                </div>
+                <!-- <button class="adicionarComentario" onclick="">postar comentário</button> -->
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
